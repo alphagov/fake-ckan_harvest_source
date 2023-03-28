@@ -34,8 +34,8 @@ def catch_all(path):
         filename_parts = filename_base.split('.')
         delay = 1
 
-        if len(path_split) > 2 and path_split[2].startswith(DELAY_TAG):
-            delay = int(path_split[2][len(DELAY_TAG):])
+        if len(path_split) > 2 and path_split[1].startswith(DELAY_TAG):
+            delay = int(path_split[1][len(DELAY_TAG):])
 
         filename = '.'.join([filename_parts[-4], filename_parts[-2], filename_parts[-1]])
         _id = filename_parts[-3].zfill(2)
@@ -54,7 +54,6 @@ def catch_all(path):
 
             return resp
     else:
-        delay = 1
         num_links = 10
         if path_split[1].startswith(NUM_LINKS_TAG):
             num_links = int(path_split[1][len(NUM_LINKS_TAG):])
